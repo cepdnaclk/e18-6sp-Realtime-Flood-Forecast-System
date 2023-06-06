@@ -4,7 +4,6 @@
 <p>
   &#x2713;  Overview<br>
   &#x2713;  Solution<br>
-  &#x2713;  Solution Architecture<br>
   &#x2713;  Team<br>
   &#x2713;  Links
 </p>
@@ -38,6 +37,34 @@
 
 
 <h2>&#x2022;  Solution</h2>
+<p>The proposed solution is to implement a simple data-driven or machine learning model to
+    identify a direct mapping between the inputs(e.g., precipitation(P), temperature(T),
+    potential evapotranspiration(PET), etc.) and outputs(In-flow level) without detailed
+    consideration of the internal structure of the physical process.<br>
+</p>
+
+<h3>Objectives</h3>
+<p>Realtime Flood Forecast:   Real-time Flood Forecast system for early warning and flood management<br>
+  Flood Inundation GIS Map:   improve flood modeling and disaster response planning<br>
+  Interactive Website:  provide access to flood-related information, resources, and support<br>
+</p>
+
+<h3>Machine Learning Approach</h3>
+<p>
+  <img src="https://github.com/cepdnaclk/e17-6sp-Flood-Forecasting-System/assets/97779686/c7377acb-5eff-4089-94c1-6a30bb38eca3" alt="Objectives Image">
+</p>
+
+<h3>Structure of the Web Interface</h3>
+<p>
+  <img src="https://github.com/cepdnaclk/e17-6sp-Flood-Forecasting-System/assets/97779686/81758692-cc3b-4a53-878d-ab3d01ee6127" alt="Objectives Image">
+</p>
+
+<h3>Users of the System</h3>
+<p>Public Users:   public users can get warning messages,view forecastsand view real time maps/data<br>
+  Officials:    officials can access the Control Panel and get Reports<br>
+</p>
+
+<h2>&#x2022;  Team</h2>
 
 
 

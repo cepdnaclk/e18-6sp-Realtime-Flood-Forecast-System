@@ -65,6 +65,21 @@
 </p>
 
 <h2>&#x2022;  Team</h2>
+<h3>Project Owner</h3>
+<p>Dr.Upul Jayasinghe, <a href="upuljm@eng.pdn.ac.lk">upuljm@eng.pdn.ac.lk</a></p>
+<h3>Team members</h3>
+<p>Konara K.M.S.L, <a href="e18181@eng.pdn.ac.lk">e18181@eng.pdn.ac.lk</a><br>
+  Rathnayake R.M.P.P, <a href="e18297@eng.pdn.ac.lk">e18297@eng.pdn.ac.lk</a><br>
+  Wimalasiri K.H.C.T, <a href="e18402@eng.pdn.ac.lk">e18402@eng.pdn.ac.lk</a><br>
+</p>
+
+<h2>&#x2022;  Links</h2>
+
+<p><a href="https://cepdnaclk.github.io/e18-6sp-Realtime-Flood-Forecast-System/">Project page</a><br>
+  <a href="http://www.ce.pdn.ac.lk/">Department of Computer Engineering</a><br>
+  <a href="https://eng.pdn.ac.lk/">University of Peradeniya</a><br>
+</p>
+
 
 
 

@@ -74,7 +74,6 @@
 </p>
 
 <h2>&#x2022;  Links</h2>
-
 <p><a href="https://cepdnaclk.github.io/e18-6sp-Realtime-Flood-Forecast-System/">Project page</a><br>
   <a href="http://www.ce.pdn.ac.lk/">Department of Computer Engineering</a><br>
   <a href="https://eng.pdn.ac.lk/">University of Peradeniya</a><br>

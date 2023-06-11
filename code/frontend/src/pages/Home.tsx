@@ -1,6 +1,7 @@
 import { Card, Col, Row } from "antd";
 import Title from "antd/es/typography/Title";
 import { FC } from "react";
+import Map from "../components/Map";
 
 const Home: FC = () => {
   return (
@@ -24,9 +25,7 @@ const Home: FC = () => {
         </Col>
         <Col span={12}>
           <Card title="Card title" bordered={false}>
-            <Title style={{ marginTop: 0 }} type="secondary">
-              Add Map Card here
-            </Title>
+            <Map />
           </Card>
         </Col>
       </Row>

@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme } from "antd";
 import Home from "./pages/Home";
-import {
-  Link,
-  Route,
-  RouterProvider,
-  Routes,
-  createBrowserRouter,
-} from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
+import Reports from "./pages/Reports";
 
 const { Header, Content, Footer } = Layout;
 
@@ -17,7 +12,7 @@ const navMenus = [
     key: "1",
     label: "Reports",
     path: "/reports",
-    element: <div>Add Reports Page Here</div>,
+    element: <Reports />,
   },
 ];
 
@@ -64,9 +59,7 @@ const App: React.FC = () => {
           ))}
         </Routes>
       </Content>
-      <Footer style={{ textAlign: "center" }}>
-        cepdnaclk ©2023
-      </Footer>
+      <Footer style={{ textAlign: "center" }}>cepdnaclk ©2023</Footer>
     </Layout>
   );
 };

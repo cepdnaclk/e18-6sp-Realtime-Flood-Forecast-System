@@ -24,15 +24,15 @@ const Map: FC = () => {
 
   const coordinates: Coordinate[] = [
     { lat: 7.990533, lng: 80.293153 },
-    { lat: 7.991234, lng: 80.294567 },
-    { lat: 7.992345, lng: 80.295678 },
+    { lat: 8.073208, lng: 79.955932 },
+    { lat: 7.936144, lng: 80.141938 },
   ];
 
   return (
     <GoogleMap
       apiKey=""
       defaultCenter={{ lat: 7.990533, lng: 80.293153 }}
-      defaultZoom={15}
+      defaultZoom={10}
       mapMinHeight="50vh"
       onGoogleApiLoaded={onGoogleApiLoaded}
       onChange={(map: any) => console.log("Map moved", map)}

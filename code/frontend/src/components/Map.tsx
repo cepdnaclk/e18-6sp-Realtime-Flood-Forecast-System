@@ -32,7 +32,7 @@ const Map: FC = () => {
     <GoogleMap
       apiKey=""
       defaultCenter={{ lat: 7.990533, lng: 80.293153 }}
-      defaultZoom={15}
+      defaultZoom={10}
       mapMinHeight="50vh"
       onGoogleApiLoaded={onGoogleApiLoaded}
       onChange={(map: any) => console.log("Map moved", map)}

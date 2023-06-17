@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Reports from "./pages/Reports";
+
 import {
   Link,
   Route,
@@ -12,12 +15,24 @@ import {
 const { Header, Content, Footer } = Layout;
 
 const navMenus = [
-  { key: "0", label: "Home", path: "/", element: <Home /> },
+  { key: "0", 
+  label: "Home", 
+  path: "/", 
+  element: <Home />,
+  position: "left",
+  },
   {
     key: "1",
     label: "Reports",
     path: "/reports",
-    element: <div>Add Reports Page Here</div>,
+    element: <Reports />,
+    position: "left",
+  },
+  { key: "2", 
+  label: "Log in", 
+  path: "/login", 
+  element: <Login />,
+  position: "right",
   },
 ];
 
@@ -30,6 +45,31 @@ const App: React.FC = () => {
 
   const handleNavClick = (key: string) => {
     setSelectedNav(key); // Update the selected navbar item when clicked
+  };
+
+  const renderMenuItems = () => {
+    const leftMenuItems = navMenus
+      .filter((menu) => menu.position === "left")
+      .map((menu) => (
+        <Menu.Item key={menu.key}>
+          <Link to={menu.path}>{menu.label}</Link>
+        </Menu.Item>
+      ));
+
+    const rightMenuItems = navMenus
+      .filter((menu) => menu.position === "right")
+      .map((menu) => (
+        <Menu.Item key={menu.key}>
+          <Link to={menu.path}>{menu.label}</Link>
+        </Menu.Item>
+      ));
+
+    return (
+      <>
+        {leftMenuItems}
+        <Menu.Item style={{ marginLeft: "auto" }}>{rightMenuItems}</Menu.Item>
+      </>
+    );
   };
 
   return (
@@ -50,11 +90,7 @@ const App: React.FC = () => {
           selectedKeys={[selectedNav]} // Pass the selected key to highlight the active navbar item
           onClick={({ key }) => handleNavClick(key)} // Handle navbar item click
         >
-          {navMenus.map((menu) => (
-            <Menu.Item key={menu.key}>
-              <Link to={menu.path}>{menu.label}</Link>
-            </Menu.Item>
-          ))}
+         {renderMenuItems()}
         </Menu>
       </Header>
       <Content className="site-layout" style={{ padding: "0 50px" }}>

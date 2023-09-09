@@ -3,6 +3,7 @@ import Title from "antd/es/typography/Title";
 import { FC } from "react";
 import Map from "../components/Map";
 import SubscribeForm from "../components/SubscribeForm";
+import CircularProgressBar from "../components/CircularProgressBar";
 
 const Home: FC = () => {
   return (
@@ -24,10 +25,17 @@ const Home: FC = () => {
               </Card>
             </Col>
           </Row>
-          <Row gutter={16}>
+          <Row gutter={16} style={{ marginBottom: "3rem" }}>
             <Col span={24}>
               <Card title="Get Flood Alerts" bordered={false}>
                 <SubscribeForm />
+              </Card>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={24}>
+              <Card title="Real time water level" bordered={false} style={{justifyContent: "center", alignItems: "center" }}>
+                <CircularProgressBar waterLevel={80} />
               </Card>
             </Col>
           </Row>

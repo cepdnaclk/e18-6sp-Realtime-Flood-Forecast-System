@@ -1,11 +1,36 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require("express");
+const { mongoose } = require("mongoose");
+const cors = require("cors");
+const dotenv = require("dotenv");
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const app = express();
+const port = 3001;
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+dotenv.config(); // Load environment variables
+
+app.use(cors());
+app.use(express.json());
+
+// Routes
+app.use(require("./routes/userRoutes"));
+
+// Start server
+app.listen(port, async () => {
+  const mongoDB = process.env.MONGODB_URI;
+  mongoose.set("strictQuery", true);
+  await mongoose
+    .connect(mongoDB, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(() => {
+      console.log("Connected to MongoDB");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  console.log(`Server is running on port: ${port}`);
+});
+
+module.exports = app;

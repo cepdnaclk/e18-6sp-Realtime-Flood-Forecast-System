@@ -6,7 +6,14 @@ interface Coordinate {
   lat: number;
   lng: number;
 }
-const AnyReactComponent = ({ text }: any) => <div>{text}</div>;
+const AnyReactComponent = ({ text, isGreen, lat, lng }: any) => (
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ fontWeight: 'bold' }}>{`Lat: ${lat}, Lng: ${lng}`}</div>
+    <div style={{ color: isGreen ? 'green' : 'red', fontWeight: 'bold' }}>
+      {text}
+    </div> 
+  </div>
+);
 
 const Map: FC = () => {
   const mapRef = useRef<any>(null);
@@ -23,9 +30,11 @@ const Map: FC = () => {
   };
 
   const coordinates: Coordinate[] = [
-    { lat: 7.990533, lng: 80.293153 },
-    { lat: 8.073208, lng: 79.955932 },
-    { lat: 7.936144, lng: 80.141938 },
+    { lat: 8.092345, lng: 80.458888 },
+    { lat: 8.023208, lng: 80.055764 },
+    { lat: 8.146144, lng: 79.848975 },
+    { lat: 8.144798, lng: 80.237000 },
+    { lat: 8.001200, lng: 80.207799 },
   ];
 
   return (
@@ -43,10 +52,11 @@ const Map: FC = () => {
           lat={lat}
           lng={lng}
           text={
-            <Title level={3} type="danger">
-              △
+            <Title level={3} type={index < 3 ? "danger" : "success"}>
+              {index < 3 ? "△" : "▲"}
             </Title>
           }
+          isGreen={index >= 3} // Determine if it's a green marker
         />
       ))}
     </GoogleMap>

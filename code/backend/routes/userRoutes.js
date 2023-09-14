@@ -16,29 +16,22 @@ router.post("/signup", (req, res) => {
     email: req.body.email,
   };
 
-  deviceId = req.body.device;
-  devicePin = req.body.pin;
-
   User.findOne({
     email: req.body.email,
   }).then((user) => {
     if (user) {
       res.status(400).send("User already exists!");
     } else {
-      if (err || !device) {
-        res.status(400).send("Error fetching device!");
-      } else {
-        User.create(user, function (err, user) {
-          if (err) {
-            console.log(err);
-            res.status(400).send("Error creating user!");
-          } else {
-            const token = generateAccessToken({ user_id: user._id });
-            user = { ...user._doc, token: token };
-            res.status(201).json(user);
-          }
-        });
-      }
+      User.create(newUser, function (err, user) {
+        if (err) {
+          console.log(err);
+          res.status(400).send("Error creating user!");
+        } else {
+          const token = generateAccessToken({ user_id: user._id });
+          user = { ...user._doc, token: token };
+          res.status(201).json(user);
+        }
+      });
     }
   });
 });

@@ -1,14 +1,16 @@
-import { Space, Table, Tag } from "antd";
+import { Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
-import React, { FC } from "react";
+import axios from "axios";
+import React, { FC, useEffect, useState } from "react";
 
 interface DataType {
   key: string;
   datetime: string;
-  station1Waterlevel: number;
-  station2Waterlevel: number;
-  station3Waterlevel: number;
-  waterflowRate: number;
+  atharagalla: number;
+  galgamuwa: number;
+  mediyawa: number;
+  mahagalkadawala: number;
+  streamflow: number;
 }
 
 const columns: ColumnsType<DataType> = [
@@ -19,81 +21,69 @@ const columns: ColumnsType<DataType> = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: "Station 1 Water Level",
-    dataIndex: "station1Waterlevel",
-    key: "station1Waterlevel",
+    title: "Atharagalla Water Level",
+    dataIndex: "atharagalla",
+    key: "atharagalla",
   },
   {
-    title: "Station 2 Water Level",
-    dataIndex: "station2Waterlevel",
-    key: "station2Waterlevel",
+    title: "Galgamuwa Water Level",
+    dataIndex: "galgamuwa",
+    key: "galgamuwa",
   },
   {
-    title: "Station 3 Water Level",
-    dataIndex: "station3Waterlevel",
-    key: "station3Waterlevel",
+    title: "Mediyawa Water Level",
+    dataIndex: "mediyawa",
+    key: "mediyawa",
   },
   {
-    title: "Waterflow Rate",
-    dataIndex: "waterflowRate",
-    key: "waterflowRate",
-  },
-];
-
-const data: DataType[] = [
-  {
-    key: "1",
-    datetime: "2023-06-10 09:00",
-    station1Waterlevel: 10,
-    station2Waterlevel: 15,
-    station3Waterlevel: 8,
-    waterflowRate: 20,
+    title: "Mahagalkadawala Water Level",
+    dataIndex: "mahagalkadawala",
+    key: "mahagalkadawala",
   },
   {
-    key: "2",
-    datetime: "2023-06-10 10:00",
-    station1Waterlevel: 5,
-    station2Waterlevel: 12,
-    station3Waterlevel: 6,
-    waterflowRate: 18,
-  },
-  {
-    key: "3",
-    datetime: "2023-06-10 11:00",
-    station1Waterlevel: 8,
-    station2Waterlevel: 10,
-    station3Waterlevel: 5,
-    waterflowRate: 15,
-  },
-  // 4 more records
-  {
-    key: "4",
-    datetime: "2023-06-10 12:00",
-    station1Waterlevel: 10,
-    station2Waterlevel: 15,
-    station3Waterlevel: 8,
-    waterflowRate: 20,
-  },
-  {
-    key: "5",
-    datetime: "2023-06-10 13:00",
-    station1Waterlevel: 5,
-    station2Waterlevel: 12,
-    station3Waterlevel: 6,
-    waterflowRate: 18,
-  },
-  {
-    key: "6",
-    datetime: "2023-06-10 14:00",
-    station1Waterlevel: 8,
-    station2Waterlevel: 10,
-    station3Waterlevel: 5,
-    waterflowRate: 15,
+    title: "Stream Flow Rate",
+    dataIndex: "streamflow",
+    key: "streamflow",
   },
 ];
 
 const ReportsTable: FC = () => {
-  return <Table columns={columns} dataSource={data} />;
+  const [data, setData] = useState<DataType[]>([]);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    axios
+      .get("http://localhost:3001/rainfall", {})
+      .then((response) => {
+        const formattedData = response.data.map((item: any) => ({
+          ...item,
+          datetime: new Date(
+            item.year,
+            item.month,
+            item.day
+          ).toLocaleDateString(),
+        }));
+
+        const filteredData = formattedData.filter(
+          (item: any) =>
+            item.atharagalla !== 0 &&
+            item.galgamuwa !== 0 &&
+            item.mahagalkadawala !== 0 &&
+            item.streamflow !== 0
+        );
+
+        filteredData.reverse();
+        setData(filteredData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return <Table columns={columns} dataSource={data ? data : []} />;
 };
 
 export default ReportsTable;

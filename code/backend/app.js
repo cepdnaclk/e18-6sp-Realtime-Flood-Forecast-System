@@ -13,6 +13,7 @@ app.use(express.json());
 
 // Routes
 app.use(require("./routes/userRoutes"));
+app.use(require("./routes/rainfallRoutes"));
 
 // Start server
 app.listen(port, async () => {

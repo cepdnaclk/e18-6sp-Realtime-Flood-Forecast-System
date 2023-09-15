@@ -4,6 +4,7 @@ import { FC } from "react";
 import Map from "../components/Map";
 import SubscribeForm from "../components/SubscribeForm";
 import CircularProgressBar from "../components/CircularProgressBar";
+import ReportsTable from "../components/WaterLevelTable";
 
 const Home: FC = () => {
   return (
@@ -41,11 +42,20 @@ const Home: FC = () => {
           </Row>
         </Col>
         <Col span={12}>
-          <Col span={24}>
-            <Card title="Real time map" bordered={false}>
-              <Map />
-            </Card>
-          </Col>
+          <Row gutter={16} style={{ marginBottom: "3rem" }}>
+            <Col span={24}>
+              <Card title="Real time map" bordered={false}>
+                <Map />
+              </Card>
+            </Col>
+          </Row>
+          <Row gutter={16} style={{ marginBottom: "3rem" }}>
+            <Col span={24}>
+              <Card bordered={false}>
+                <ReportsTable />
+              </Card>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </div>
